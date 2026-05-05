@@ -1,0 +1,1 @@
+C:\Users\wisea\OneDrive\Desktop\Code\ stuff\learning_Rust\primitive_practice\target\debug\primitive_practice.exe: C:\Users\wisea\OneDrive\Desktop\Code\ stuff\learning_Rust\primitive_practice\src\main.rs
