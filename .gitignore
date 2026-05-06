@@ -1,4 +1,7 @@
 *.exe
 *.pdb
+*.lock
+*.toml
 
 dontpush/
+target/
