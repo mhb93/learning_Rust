@@ -56,4 +56,16 @@ fn main() {
     println!("{}", tuple1.6);
     let metaTuple = ((1u8, 2u16, 3u32), (4u64, -1i8), -2i16, 'q');
     println!("Send him to the MEGA TUPLE ZONE {:?}", metaTuple);
+
+    let thisThing = (1, "glorp", 98.98, false);
+    let (a, b, c, d) = thisThing;
+    println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
+    let arrayOne: [&str; 4] = ["Get", "off", "my", "lawn"];
+    let arrayTwo: [i16; 392] = [-4; 392];
+    for index in 0..arrayOne.len(){
+        println!("{}, {}", arrayOne[index], index);
+    }
+    for index in 0..5{
+        println!("{}", arrayTwo[index]);
+    }
 }
