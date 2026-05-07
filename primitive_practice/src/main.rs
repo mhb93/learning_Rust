@@ -4,7 +4,7 @@
 fn main() {
     let mutableVariable = 14;
     println!("{mutableVariable}");
-    #[allow(non_snake_case)] let mutableVariable = true;
+    let mutableVariable = true;
     println!("{mutableVariable}");
 
     // Declaring a couple different data structures
@@ -37,16 +37,23 @@ fn main() {
     println!("{randomVar}");
 
     // Here is an exmpale of freezing:
-    let mut newVar = 945000i32;
+    #[allow(unused_assignments)] let mut newVar = 945000i32;
     {
-        let newVar = newVar;    // Now he is frozen
+        // let newVar = newVar;    // Now he is frozen
         // If I were to uncomment the next two lines, we'd have issues
         // newVar = 9;
         // println!("{newVar}");
     }
     newVar = 392;
-    println!("{newVar}");
+    println!("{newVar}\n");
 
     // Casting
-    let decimal = 53.444_f32;
+    let _decimal = 53.444_f32;
+
+    // Tuples n stuff
+    let tuple1 = (91, 64, 'z', 281, 999, 475, "potatoes", 3.14);
+    println!("{}", tuple1.2);
+    println!("{}", tuple1.6);
+    let metaTuple = ((1u8, 2u16, 3u32), (4u64, -1i8), -2i16, 'q');
+    println!("Send him to the MEGA TUPLE ZONE {:?}", metaTuple);
 }
