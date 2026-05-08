@@ -1,6 +1,32 @@
+#[derive(Debug)]
+struct Wrestler{
+    name: String,
+    finisher: String,
+    age: u8,
+}
+
 #[allow(non_snake_case)] // I am a camelCase stan
+struct Point{
+    xCoord: f32,
+    yCoord: f32,
+}
 
+#[allow(non_snake_case)] // I am a camelCase stan
+struct Rectangle{
+    topLeft: Point,
+    topRight: Point,
+}
 
+#[allow(non_snake_case)] // I am a camelCase stan
+enum AMPPSMembers{
+    Quetzal,
+    Mary,
+    Jonathan,
+    Bruce,
+    Ayman,
+}
+
+#[allow(non_snake_case)] // I am a camelCase stan
 fn main() {
     let mutableVariable = 14;
     println!("{mutableVariable}");
@@ -67,5 +93,38 @@ fn main() {
     }
     for index in 0..5{
         println!("{}", arrayTwo[index]);
+    }
+
+    // Size
+    println!("The size of arrayTwo in bytes is: {}", std::mem::size_of_val(&arrayTwo));
+
+    // Make some wrestlers
+    let wrestName = "CM Punk".to_string();
+    let wrestFinisher = "GTS".to_string();
+    let wrestAge = 47;
+
+    let Punk = Wrestler{ name: wrestName, finisher: wrestFinisher, age: wrestAge };
+    let Danhausen = Wrestler{ name: "Danhausen".to_string(), finisher: "You Are Cursed!".to_string(), age: 35 };
+    println!("{:?}", Punk);
+    println!("My favorite wrestler is {}! His finisher is {}, and his age is {}.", Danhausen.name, Danhausen.finisher, Danhausen.age);
+
+    // Practice with the "use" keyword
+    let spaceCrew = Ayman;
+    let spaceCrew2 = Quetzal;
+    use AMPPSMembers::*;
+    // I quite like this match stuff
+    match spaceCrew{
+        Quetzal => println!("I am the PI."),
+        Mary => println!("I am the telemetry and high voltage guy."),
+        Jonathan => println!("I am the 3D printing guy."),
+        Bruce => println!("I am the memory and pulses guy."),
+        Ayman => println!("I am the plastics guy."),
+    }
+    match spaceCrew2{
+        Quetzal => println!("I am the PI."),
+        Mary => println!("I am the telemetry and high voltage guy."),
+        Jonathan => println!("I am the 3D printing guy."),
+        Bruce => println!("I am the memory and pulses guy."),
+        Ayman => println!("I am the plastics guy."),
     }
 }
