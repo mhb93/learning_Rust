@@ -26,6 +26,8 @@ enum AMPPSMembers{
     Ayman,
 }
 
+const NUM_APPLES: i8 = 47;
+
 #[allow(non_snake_case)] // I am a camelCase stan
 fn main() {
     let mutableVariable = 14;
@@ -83,7 +85,7 @@ fn main() {
     let metaTuple = ((1u8, 2u16, 3u32), (4u64, -1i8), -2i16, 'q');
     println!("Send him to the MEGA TUPLE ZONE {:?}", metaTuple);
 
-    let thisThing = (1, "glorp", 98.98, false);
+    let thisThing = (NUM_APPLES, "glorp", 98.98, false);
     let (a, b, c, d) = thisThing;
     println!("{:?}, {:?}, {:?}, {:?}", a, b, c, d);
     let arrayOne: [&str; 4] = ["Get", "off", "my", "lawn"];
@@ -127,4 +129,10 @@ fn main() {
         Bruce => println!("I am the memory and pulses guy."),
         Ayman => println!("I am the plastics guy."),
     }
+
+    // Parsing a string
+    let parsed: i32 = "6".parse().unwrap();
+    let megaParsed = "10".parse::<i32>().unwrap();
+    let sum = parsed + megaParsed;
+    println!("Sum: {}", sum);
 }
