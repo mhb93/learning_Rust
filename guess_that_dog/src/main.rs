@@ -6,6 +6,8 @@
 // The names of the dogs that the user will be shown throughout the game
 const DOGNAMES: [&str; 3] = ["Cooper", "Lobo", "Shep"];
 
+
+
 #[allow(non_snake_case)] // I am a camelCase stan
 fn main() {
     // Introduction
@@ -14,29 +16,38 @@ fn main() {
     println!("Now, take a look at this dog: ");
 
     // Dogs
-    let array: [String; 3] = ["  __    __\no-''))_____\\\n\"--__/ * * * )\nc_c__/-c____/".to_string(),
-                              "         __\n        /  \\\n       / ..|\\\n      (_\\  |_)\n      /  \\@' \n     /     \\\n_   /  `   |\n\\\\/  \\  | _\\\n \\   /_ || \\\\_\n  \\____)|_) \\_)".to_string(),
-                              "             ____\n            /    \\__\n|\\         /    @   \\\n\\ \\_______|    \\   .:|>\n \\      ##|    | \\__/\n  |    ####\\__/   \\\n  /  /  ##       \\|\n /  /__________\\  \\\n L_JJ           \\__JJ".to_string(),
-                              ];
+    let dogArray: [String; 3] = ["  __    __\no-''))_____\\\n\"--__/ * * * )\nc_c__/-c____/".to_string(),
+                            "         __\n        /  \\\n       / ..|\\\n      (_\\  |_)\n      /  \\@' \n     /     \\\n_   /  `   |\n\\\\/  \\  | _\\\n \\   /_ || \\\\_\n  \\____)|_) \\_)".to_string(),
+                            "             ____\n            /    \\__\n|\\         /    @   \\\n\\ \\_______|    \\   .:|>\n \\      ##|    | \\__/\n  |    ####\\__/   \\\n  /  /  ##       \\|\n /  /__________\\  \\\n L_JJ           \\__JJ".to_string(),
+                            ];
 
     // TODO: randomize which dog gets shown
     // TODO: put this all in a loop for ENDLESS FUN OH BOY
-    let arrVar = &array[2];
-    println!("{arrVar}");
-    println!("Now, name that dog!\n(Type in the dog's name and then press enter.)");
-    // Choose the dog's name
-    let dogNameNum: usize = rand::random_range(0..(DOGNAMES.len() - 1));
-    let mut dogName = DOGNAMES[dogNameNum].to_string();
+    loop{
+        let asciiNum: usize = rand::random_range(0..dogArray.len());
+        let dogArt = &dogArray[asciiNum];
+        println!("{dogArt}");
+        println!("Name that dog!\n(Type in the dog's name and then press enter, or type \"quit\" to quit.)");
+        // Choose the dog's name
+        let dogNameNum: usize = rand::random_range(0..(DOGNAMES.len() - 1));
+        let mut dogName = DOGNAMES[dogNameNum].to_string();
 
-    // Take a guess from the user
-    let mut guess = String::new();
-    std::io::stdin().read_line(&mut guess).expect("Oopsie, I didn't get that.");
-    guess = guess.trim().to_string();
+        // Take a guess from the user
+        let mut guess = String::new();
+        std::io::stdin().read_line(&mut guess).expect("Oopsie, I didn't get that.");
+        guess = guess.trim().to_string();
 
-    // Important: user cannot get it right, ever
-    if dogName == guess {
-        dogName = (DOGNAMES[dogNameNum + 1]).to_string();
+        // Important: user cannot get it right, ever
+        // TODO: make this case-unsensitive
+        if dogName == guess {
+            dogName = (DOGNAMES[dogNameNum + 1]).to_string();
+        }
+        // Let them quit if they want
+        else if guess == "quit" {
+            println!("Thanks for playing!");
+            break;
+        }
+        println!("Oh, I'm so sorry, but that's incorrect!");
+        println!("This dog's name is {}.\n\n", dogName);
     }
-    println!("Oh, I'm so sorry, but that's incorrect!");
-    println!("This dog's name is {}.", dogName);
 }
