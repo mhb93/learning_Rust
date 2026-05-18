@@ -4,8 +4,8 @@
 // Last updated 05/08/2026
 
 // The names of the dogs that the user will be shown throughout the game
-const DOGNAMES: [&str; 3] = ["Cooper", "Lobo", "Shep"];
-
+const DOGNAMES: [&str; 18] = ["Cooper", "Lobo", "Shep", "Trooper", "Steve", "Lawrence", "Cynthia", "Gummo", "Boots", "Marshall", "Macy", "Peanut", "Dojo", "Max", "Douglas", "Shiloh", "Pixie", "Ruggles"];
+const AARONSRESPONSE: &str = "I'M GONNA GUESS THAT DOG'S NAME!";
 
 
 #[allow(non_snake_case)] // I am a camelCase stan
@@ -14,6 +14,7 @@ fn main() {
     println!("Welcome to Name That Dog!");
     println!("(This game was based on the Saturday Night Live sketch of the same name. It's pretty funny and I think you should look it up.)");
     println!("Now, take a look at this dog: ");
+    let aaronEasterEgg: String = AARONSRESPONSE.to_string();
 
     // Dogs
     let dogArray: [String; 3] = ["  __    __\no-''))_____\\\n\"--__/ * * * )\nc_c__/-c____/".to_string(),
@@ -21,8 +22,6 @@ fn main() {
                             "             ____\n            /    \\__\n|\\         /    @   \\\n\\ \\_______|    \\   .:|>\n \\      ##|    | \\__/\n  |    ####\\__/   \\\n  /  /  ##       \\|\n /  /__________\\  \\\n L_JJ           \\__JJ".to_string(),
                             ];
 
-    // TODO: randomize which dog gets shown
-    // TODO: put this all in a loop for ENDLESS FUN OH BOY
     loop{
         let asciiNum: usize = rand::random_range(0..dogArray.len());
         let dogArt = &dogArray[asciiNum];
@@ -37,8 +36,15 @@ fn main() {
         std::io::stdin().read_line(&mut guess).expect("Oopsie, I didn't get that.");
         guess = guess.trim().to_string();
 
+
         // Important: user cannot get it right, ever
         // TODO: make this case-unsensitive
+        while guess == aaronEasterEgg { // Had to throw an easter egg in here
+            println!("Take it easy there, Aaron.");
+            guess.clear();
+            std::io::stdin().read_line(&mut guess).expect("Oopsie, I didn't get that.");
+            guess = guess.trim().to_string();
+        }
         if dogName == guess {
             dogName = (DOGNAMES[dogNameNum + 1]).to_string();
         }
