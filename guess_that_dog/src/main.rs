@@ -1,7 +1,7 @@
 // This program is based on the Saturday Night Live sketch Name That Dog!
 // The idea is to guess the name of the dog by looking at it.
 // It's still a work in progress...
-// Last updated 05/08/2026
+// Last updated 05/18/2026
 
 // The names of the dogs that the user will be shown throughout the game
 const DOGNAMES: [&str; 18] = ["Cooper", "Lobo", "Shep", "Trooper", "Steve", "Lawrence", "Cynthia", "Gummo", "Boots", "Marshall", "Macy", "Peanut", "Dojo", "Max", "Douglas", "Shiloh", "Pixie", "Ruggles"];
